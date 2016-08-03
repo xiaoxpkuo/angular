@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="content" ng-controller="myCtrl" onclick="myclick()">666</div>
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    angular.module('zfpxMod',[]);
+    angular.module('zfpxMod').controller('myCtrl',function ($scope) {
+        
+    });
+    window.myclick=function () {
+        console.log(1)
+        console.log(angular.element(document.getElementById('content')).data('$scope'))
+    }
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <p><input type="text" zf-model="val"></p>
+        <p>{{val}}</p>
+    </div>
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    var app=angular.module('zfpxMod',[]);
+    app.controller('myCtrl',function ($scope) {
+        
+    });
+    app.directive('zfModel',function () {
+        return{
+            link:function ($scope,$ele,attr) {
+                console.log(attr)
+                $ele.on('change input',function () {
+
+                    $scope[attr['zfModel']]=$ele.val();
+                    $scope.$apply();
+                    //console.log($scope)
+                });
+                $scope.$watch(attr['zfModel'],function (newVal,oldVal) {
+                    console.log(arguments);
+                    $ele.val(newVal)
+                })
+            }
+        }
+    })
+
+</script>
+</html>

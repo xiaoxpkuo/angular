@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hello">
+<head>
+    <meta charset="UTF-8" >
+    <title>angular</title>
+
+</head>
+<body>
+<div class="container" style="width: 100px; height: 100px;" my-red>
+    {{'name'|uppercase}} test
+</div>
+
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    var app=angular.module('hello',[]);
+    //装饰式指令
+    app.directive('myRed',function () {
+        return {
+            //连接函数
+            link:function ($scope,ele,attr) {
+                console.log(attr)
+                ele.css('color','red');
+                ele.on('click',function () {
+                    console.log(ele.html())
+                })
+            }
+        }
+    })
+</script>
+</html>

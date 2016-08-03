@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hello">
+<head>
+    <meta charset="UTF-8" >
+    <title>angular</title>
+
+</head>
+<body>
+    <div class="container" ng-controller="myCtrl">
+        {{name}}
+    </div>
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    angular.module('hello',[]);
+    angular.module('hello').controller('myCtrl',function ($scope) {
+        $scope.name='xp'
+    });
+</script>
+</html>

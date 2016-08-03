@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hello">
+<head>
+    <meta charset="UTF-8" >
+    <title>angular</title>
+
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    {{name}}
+    <div ng-model="name"></div>
+    <login-panel></login-panel>
+</div>
+
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    var app=angular.module('hello',[]);
+    angular.module('hello').controller('myCtrl',function ($scope) {
+        $scope.name='xp'
+    });
+    //组件式指令
+    app.directive('loginPanel',function () {
+        return {
+            //连接函数
+            link:function () {},
+            template:'用户名：<input type="text" name="username">'
+        }
+    })
+</script>
+</html>

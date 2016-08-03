@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <!--<div ng-class="{'has-error':name.length<3,'has-warn':name.length<6}"></div>-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" ng-controller="myCtrl">
+                    <li ng-repeat="name in names" ng-click="selected(cur=name.txt)" ng-class="{active:cur==name.txt}" ><a href="{{name.src}}" ng-bind="name.txt"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    angular.module('zfpxMod',[]);
+    angular.module('zfpxMod').controller('myCtrl',function ($scope) {
+        $scope.names=[{txt:'home',src:'#1'},{txt:'link',src:'#2'},{txt:'page',src:'#3'}];
+        $scope.cur='home';
+        $scope.selected=function (name) {
+            console.log($scope)
+            $scope.cur=name
+        }
+    })
+</script>
+</html>

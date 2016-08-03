@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zfpxMod">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <input type="text" zf-model="age">
+        <p>{{age}}</p>
+    </div>
+</body>
+<script src="../lib/angular.min.js"></script>
+<script>
+    angular.module('zfpxMod',[]);
+    angular.module('zfpxMod').controller('myCtrl',function ($scope,$timeout) {
+        $scope.$watch('age',function (newVal,oldVal) {
+            console.log(newVal);
+        })
+    });
+    angular.module('zfpxMod').directive('zfModel',function () {
+        return{
+            link:function ($scope,$ele,attr) {
+                $ele.on('change input',function () {
+                    $scope[attr['zfModel']]=$ele.val();
+                    //强行脏值检查
+                    $scope.$apply()
+                });
+                $scope.$watch(attr['zfModel'],function (newVal,oldVal) {
+                    $ele.val(newVal)
+                })
+            }
+        }
+    })
+</script>
+</html>
